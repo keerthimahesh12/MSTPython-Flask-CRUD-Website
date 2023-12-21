@@ -2,7 +2,7 @@
 A web-based task management system made using Flask framework and MySQL. 
 
 # Features
-
+    
     Display tasks
     Add task
     Edit task
