@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Tasks</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+    button {
+    background-color: #9500ff;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 auto; 
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #9500ff;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+input[type="submit"] {
+    background-color: #9500ff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+    <h2>View All Tasks</h2>
+
+    
+    <form action="/viewalltasks" method="GET">
+        <label for="category">Filter by Category:</label>
+        <input type="radio" name="category" value="Official"> Official
+        <input type="radio" name="category" value="Unofficial"> Unofficial
+        <input type="radio" name="category" value="Other"> Other
+        <input type="submit" value="Apply Filter">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Task ID</th>
+                <th>User ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in sqldata %}
+                {% if not request.args.get('category') or request.args.get('category') == i[4] %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                    <td>{{i[4]}}</td>
+                    <td>{{i[5]}}</td>
+                    <!--<td>{{i[6]}}</td>-->
+                    <td>
+                        {% if i[6] == 1 %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endif %}
+            {%endfor%}
+        </tbody>
+    </table>
+    <form action="/viewalltasks" method="POST">
+        <button type="submit">Go Back Home</button>
+    </form>
+</body>
+</html>

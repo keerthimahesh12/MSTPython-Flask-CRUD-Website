@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task Status</title>
+<style>
+body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(5px);
+
+}
+
+button {
+    background-color: #9500ff;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 auto; 
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #9500ff;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+        
+select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+</style>
+</head>
+
+<body background="../static/Self-Management-Skills.png";>
+
+    <h2>Update Task Status</h2>
+    <form action="/updatestatus" method="POST">
+        
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Task ID</th>
+                <th>User ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in sqldata %}
+            <tr>
+                <td><input type="checkbox" name="task_ids[]" value="{{ i[0] }}"></td>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+                <td>{{ i[2] }}</td>
+                <td>{{ i[3] }}</td>
+                <td>{{ i[4] }}</td>
+                <td>{{ i[5] }}</td>
+                <td>
+                    <!-- Dropdown list for status -->
+                    <select name="status_{{ i[0] }}">
+                        
+                        <option value="Incomplete" {% if i[6] == 'Incomplete' %}selected{% endif %}>Incomplete</option>
+                        <option value="Complete" {% if i[6] == 'Complete' %}selected{% endif %}>Complete</option>
+                    
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit">Update Selected Tasks</button>
+    
+    </form>
+</body>
+</html>

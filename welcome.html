@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome, User!</title>
+    <style>
+
+    body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(5px);
+        }
+
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .options {
+            margin-top: 50px;
+        }
+
+        .options a {
+            display: block;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #9900ff;
+            color: #fff;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .options a:hover {
+            background-color: #0009b3;
+        }
+    </style>
+</head>
+<body background="../static/Self-Management-Skills.png";>
+    <h2>Welcome, {{user}}!</h2>
+    <div class="options">
+        <a href="viewalltasks">View All Tasks</a>
+        <a href="addtask">Add Task</a>
+        <a href="deletetask">Delete Task</a>
+        <a href="updatestatus">Update Task Status</a>
+        <a href="logout">Logout</a>
+        <a href="deleteaccount">Delete Account</a>
+    </div>
+</body>
+</html>

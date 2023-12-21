@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <title>Add Task</title>
+
+<style>
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(5px);
+
+}
+
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin-top: 10px; 
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+button {
+            background-color: #9500ff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin: 0 auto; /* auto centers the button horizontally */
+            display: block;
+        }
+
+button:hover {
+            background-color: #4645a0;
+        }
+</style>
+
+   
+</head>
+<body background="../static/Self-Management-Skills.png" center no-repeat;>
+
+<h2>Add Task</h2>
+
+<form action="/addtask" method="POST">
+    
+    <label for="task_id">Task ID:</label>
+    <input type="number"  name="task_id" required><br>
+
+    <label for="user_id">User ID:</label>
+    <input type="number"  name="user_id" required><br>
+
+    <label for="title">Title:</label>
+    <input type="text"  name="title" maxlength="100" required><br>
+
+    <label for="description">Description:</label>
+    <input type="text" name="description" rows="4" required></textarea><br>
+
+    <label for="category">Category:</label>
+    <select name="category" required>
+    <option value="Official">Official</option>
+    <option value="Unofficial">Unofficial</option>
+    <option value="Other">Other</option>
+    </select>
+    <br>
+
+    <label for="due_date">Due Date:</label>
+    <input type="date"  name="due_date" required><br>
+
+    <label for="status">Status:</label>
+    <select name="status" required>
+    <option value="0">Incomplete</option>
+    <option value="1">Complete</option>
+    </select>
+    <br>
+    <br>
+
+    <button>Submit</button>
+</form>
+
+</body>
+</html>
